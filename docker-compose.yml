@@ -1,0 +1,11 @@
+version: "3"
+
+services:     
+  rbs:
+    container_name: rbs
+    build: server
+    command: python manage.py runserver 0.0.0.0:80
+    volumes:
+      - ./server:/server
+    ports:
+      - "80:80"

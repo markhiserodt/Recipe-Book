@@ -82,10 +82,10 @@ WSGI_APPLICATION = 'foodApp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME': 'food-db',
+        'NAME': 'recipebook-db',
         "USER": "azureadmin",
-        "PASSWORD": "CypherFusion@2023",
-        "HOST": "food-server.database.windows.net",
+        "PASSWORD": "%{E!zX_O{2@I+]$YbZ$7",
+        "HOST": "recipebook-server.database.windows.net",
         "PORT": "1433",
     }
 }
