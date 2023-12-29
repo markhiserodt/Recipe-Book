@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'mssql',
         'NAME': 'recipebook-db',
         "USER": "azureadmin",
-        "PASSWORD": "%{E!zX_O{2@I+]$YbZ$7",
+        "PASSWORD": "RecipeBook@2023",
         "HOST": "recipebook-server.database.windows.net",
         "PORT": "1433",
     }

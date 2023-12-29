@@ -18,6 +18,7 @@ resource "azurerm_mssql_server" "server" {
   location                     = var.resource_group_location
   administrator_login          = var.admin_username
   administrator_login_password = local.admin_password
+  version                      = "12.0"
 
   # azuread_administrator {
   #   login_username = "AzureAD Admin"
@@ -29,17 +30,14 @@ resource "azurerm_mssql_database" "db" {
   name      = "${var.sql_server_name}-db"
   server_id = azurerm_mssql_server.server.id
 
-  sku_name                    = "B_Gen5_2"
-  storage_mb                  = 1024
+  sku_name                    = "Basic"
+  max_size_gb                 = 2
   zone_redundant              = false
-  auto_pause_delay_in_minutes = 60
-  version                     = "12.0"
 }
 
-resource "azurerm_mysql_firewall_rule" "fwr" {
+resource "azurerm_mssql_firewall_rule" "fwr" {
   name                = "home"
-  resource_group_name = var.resource_group_name
-  server_name         = azurerm_mysql_server.server.name
+  server_id           = azurerm_mssql_server.server.id
   start_ip_address    = var.ip_address
   end_ip_address      = var.ip_address
 }

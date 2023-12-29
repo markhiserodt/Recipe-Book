@@ -4,8 +4,8 @@ services:
   rbs:
     container_name: rbs
     build: server
-    command: python manage.py runserver 0.0.0.0:80
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./server:/server
     ports:
-      - "80:80"
+      - "8000:8000"
