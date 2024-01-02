@@ -5,3 +5,5 @@ resource "azurerm_container_registry" "acr" {
   sku                 = "Basic"
   admin_enabled       = false
 }
+
+# Add user with AcrPush role so they can sign in and push docker image
