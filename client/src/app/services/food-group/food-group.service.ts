@@ -3,6 +3,7 @@ import { Inject, Injectable, inject, signal } from '@angular/core';
 import { FoodGroupRequest } from '../../models/food-group-request.model';
 import { Observable, take } from 'rxjs';
 import { FoodGroup } from '../../models/food-group.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +18,12 @@ export class FoodGroupService {
   }
 
   addFoodGroup(foodGroupRequest: FoodGroupRequest): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl + 'api/foodGroup'}`, foodGroupRequest);
+    return this.http.post<any>(`${environment.apiUrl + 'api/foodGroup'}`, foodGroupRequest);
   }
 
   getFoodGroups(): void {
     if (this.foodGroups().length > 0) return;
-    this.http.get<FoodGroup[]>(`${this.baseUrl + 'api/foodGroup'}`).pipe(take(1)).subscribe({
+    this.http.get<FoodGroup[]>(`${environment.apiUrl + 'api/foodGroup'}`).pipe(take(1)).subscribe({
       next: (foodGroups: FoodGroup[]) => {
         this.foodGroups.set(foodGroups);
       }
@@ -34,10 +35,10 @@ export class FoodGroupService {
   // }
 
   updateFoodGroup(foodGroupRequest: FoodGroupRequest): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl + 'api/foodGroup'}`, foodGroupRequest);
+    return this.http.put<any>(`${environment.apiUrl + 'api/foodGroup'}`, foodGroupRequest);
   }
 
   deleteFoodGroup(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl + 'api/foodGroup/' + id}`);
+    return this.http.delete<any>(`${environment.apiUrl + 'api/foodGroup/' + id}`);
   }
 }
